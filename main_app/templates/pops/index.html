@@ -1,0 +1,16 @@
+{% extends 'base.html' %} {% block content %}
+
+<h1>Pop List</h1>
+
+{% for pop in pops %}
+
+<div class="card">
+    <div class="card-content">
+      <span class="card-title">{{ pop.name }}</span>
+      <p>Brand: {{ pop.brand }}</p>
+      <p>Model Number: {{ pop.model_no }}</p>
+      <p>Description: {{ pop.description }}</p>
+    </div>
+  </div>
+
+{% endfor %} {% endblock %}
