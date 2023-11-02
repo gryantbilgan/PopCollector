@@ -30,7 +30,7 @@ class Pop(models.Model):
         return reverse('detail', kwargs={'pop_id': self.id})
     
     def log_for_today(self):
-        return self.logging_set.filter(date=date.today()).count() >= len(BOXES)
+        return self.logging_set.filter(date=date.today(), opened='N').exists()
     
 class Logging(models.Model):
     date = models.DateField('Current Date')
