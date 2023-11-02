@@ -25,15 +25,22 @@
       {{ logging_form.as_p }}
       <input type="submit" class="btn" value="Add Log">
     </form>
+    <br>
+    {% if pop.log_for_today %}
+      <div class="card-panel black-text center-align">{{pop.name}} remains unopened for today</div>
+    {% else %}
+      <div class="card-panel red-text center-align">{{pop.name}} might have been opened by someone...</div>
+    {% endif %}
     <table class="striped">
       <thead>
         <tr><th>Date</th><th>Opened?</th><th>Genre</th></tr>
       </thead>
       <tbody>
-        {% for loggin in pop.logging_set.all %}
+        {% for logging in pop.logging_set.all %}
           <tr>
             <td>{{logging.date}}</td>
-            <td>{{logging.get_log_display}}</td>
+            <td>{{logging.get_opened_display}}</td>
+            <td>{{logging.get_genre_display}}</td>
           </tr>
         {% endfor %}
       </tbody>

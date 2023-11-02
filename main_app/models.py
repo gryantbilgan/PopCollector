@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from datetime import date
 
 BOXES = (
     ('N', 'No'),
@@ -27,6 +28,9 @@ class Pop(models.Model):
     
     def get_absolute_url(self):
         return reverse('detail', kwargs={'pop_id': self.id})
+    
+    def log_for_today(self):
+        return self.logging_set.filter(date=date.today()).count() >= len(BOXES)
     
 class Logging(models.Model):
     date = models.DateField('Current Date')
