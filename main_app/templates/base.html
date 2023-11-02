@@ -9,18 +9,19 @@
   <title>Pop Collector</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 <body>
   <header class="navbar-fixed">
     <nav>
       <div class="nav-wrapper green accent-4">
         <ul>
-          <li><a href="/" class="brand-logo center">&nbsp;&nbsp;Pop Collector</a></li>
+          <li><a href="{% url 'home' %}" class="brand-logo center">&nbsp;&nbsp;Pop Collector</a></li>
         </ul>
         <ul class="right">
-          <li><a href="/about">About</a></li>
-          <li><a href="/pops">View All My Pops</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'pops_create' %}">Add a Pop</a></li>
+          <li><a href="{% url 'index' %}">View All My Pops</a></li>
         </ul>
       </div>
     </nav>
@@ -32,6 +33,5 @@
   <footer class="page-footer green accent-4">
     <div class="right white-text">All Rights Reserved, &copy; 2023 Pop Collector &nbsp;</div>
   </footer>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/
 </body>
 </html>
