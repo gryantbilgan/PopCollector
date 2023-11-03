@@ -21,7 +21,7 @@ def pops_index(request):
 def pops_detail(request, pop_id):
     pop = Pop.objects.get(id=pop_id)
     id_list = pop.partners.all().values_list('id')
-    partners_pop_doesnt_have = Partner.objects.exclude(id_in=id_list)
+    partners_pop_doesnt_have = Partner.objects.exclude(id__in=id_list)
     logging_form = LoggingForm()
     return render(request, 'pops/detail.html', {
         'pop': pop, 'logging_form': logging_form,
