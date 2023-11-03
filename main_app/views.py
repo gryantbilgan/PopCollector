@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Pop
+from django.views.generic import ListView, DetailView
+from .models import Pop, Partner
 from .forms import LoggingForm
 
 # Create your views here.
@@ -19,6 +20,7 @@ def pops_index(request):
 
 def pops_detail(request, pop_id):
     pop = Pop.objects.get(id=pop_id)
+    id_list = pop.partners.all().values_list('id')
     logging_form = LoggingForm()
     return render(request, 'pops/detail.html', {
         'pop': pop, 'logging_form': logging_form

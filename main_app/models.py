@@ -16,12 +16,23 @@ HEAD = (
     ('PT', 'Pop Television'),
 )
 
+class Partner(models.Model):
+    name = models.CharField(max_length=50)
+    item_no = models.IntegerField()
+
+    def __str__(self):
+        return self.name
+    
+    def get_absolute_url(self):
+        return reverse('partners_detail', kwargs={"pk": self.id})
+    
 # Create your models here.
 class Pop(models.Model):
     name = models.CharField(max_length=100)
     brand = models.CharField(max_length=100)
     item_no = models.IntegerField()
     description = models.TextField(max_length=250)
+    partners = models.ManyToManyField(Partner)
 
     def __str__(self) -> str:
         return f'{self.name} ({self.id})'
